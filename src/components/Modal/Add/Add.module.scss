@@ -1,0 +1,25 @@
+.add {
+  label, input {
+    width: 50%;
+    display: block;
+  }
+
+  input {
+    margin: 0 auto;
+    margin-bottom: 0.75em;
+    height: 1.5em;
+    border: 2px solid #a7adaf;
+    outline: none;
+    border-radius: 3px;
+    &:focus {
+      border: 2px solid #0c9ec0;
+    }
+  }
+
+  label {
+    margin-left: 2.2em;
+    margin-bottom: 0.25em;
+  }
+
+
+}

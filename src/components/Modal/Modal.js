@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Add from "./Add/Add";
 import Delete from "./Delete/Delete";
 import Update from "./Update/Update";
+import styles from "./Modal.module.scss";
 
 const Modal = (props) => {
     const [option, setOption] = useState();
@@ -24,17 +25,18 @@ const Modal = (props) => {
         setData(myData);
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.modal}>
             <select onChange={handleOption}>
-                <option value={"add"}>Add a Todo Item</option>
-                <option value={"remove"}>Remove a Todo Item</option>
-                <option value={"edit"}>Edit a Todo Item</option>
+                <option value="none">Select an Operation...</option>
+                <option value={"add"}>Add</option>
+                <option value={"remove"}>Remove</option>
+                <option value={"edit"}>Edit</option>
             </select>
             {option==="add"&& <Add onAdd={handleOperation}/>}
             {option==="remove"&& <Delete onDelete={handleOperation} todoItems={todoItems}/>}
             {option==="edit"&& <Update onUpdate={handleOperation}/>}
             <button type="submit">Submit</button>
-            <button onClick={()=>{props.close}}>Close</button>
+            {/*<button onClick={()=>{props.close}}>Close</button>*/}
         </form>
     );
 };

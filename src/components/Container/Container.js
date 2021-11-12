@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import TodoList from "../TodoList/TodoList";
 import Modal from "../Modal/Modal";
+import Add from "../Modal/Add/Add";
 
 const Container = (props) => {
     const [todoItems, setTodoItems] = useState();
@@ -18,11 +19,11 @@ const Container = (props) => {
 
     return (
         <div>
+            <button onClick={()=>{setModal(true)}}>Edit Todo List</button>
+            {modal&& <Modal/>}
+
             <TodoList/>
-            <Modal/>
-            <button onClick={()=>{setModal(true)}}>Add Item</button>
-            <button onClick={()=>{setModal(true)}}>Delete Item</button>
-            <button onClick={()=>{setModal(true)}}>Update Item</button>
+
         </div>
     );
 };
