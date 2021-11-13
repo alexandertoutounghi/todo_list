@@ -12,6 +12,7 @@ const Container = (props) => {
         {id: 5, name: "buy tomatoes"},
         {id: 6, name: "buy tomatoes"},
         {id: 7, name: "buy tomatoes"}]);
+    // const completed
     const [modal, setModal] = useState(false);
     const [mode, setMode] = useState('');
     const [task, setTask] = useState();
@@ -26,7 +27,6 @@ const Container = (props) => {
     //     };
     // }, [TodoItems]);
     const handleMultipleDelete = (itemsToDelete) => {
-        console.log('hello')
         // setState({})
         // console.log(itemsToDelete)
         // setTodoList(todoList.filter((item,index)=> {
@@ -43,34 +43,57 @@ const Container = (props) => {
 
     }
     const handleDelete = (id) => {
-        console.log("hello")
+        console.log(id);
+
         setModal(true);
         setMode('delete');
-        setTask(todoList[id]);
+        setTask(todoList.filter(todo => todo.id === id)[0]);
+        console.log(task)
     }
     const handleEdit = (id) => {
-        console.log("hello")
         setModal(true);
-        setMode('delete');
-        setTask(todoList[id]);
+        setMode('edit');
+        setTask(todoList.filter(todo => todo.id === id)[0]);
     }
     const handleConfirmDelete = (todo) => {
         setTodoList(todoList.filter((item) => {
-                if (item.id !== todo.id) {
+                if (item.id !== todo.id)
                     return item;
-                }
             }
         ));
         setModal(false);
+        setMode('')
+    }
+    const handleAdd = () => {
+        setModal(true);
+        setMode('add');
+    }
 
+    const handleConfirmAdd = (data) => {
+        const id = Math.floor(Math.random()*100);
+        setTodoList(prevState => [
+            {id: id, name: data},
+            ...prevState,
+        ])
+        setModal(false);
+        setMode('')
+    }
+    const handleConfirmEdit = (data) => {
+        // const task = setTask(todoList.filter(todo => todo.id === data.id)[0]);
+        const index = todoList.findIndex(todo => todo.id === data.id);
+        const copyList = todoList;
+        copyList[index] = data;
+        setTodoList(prevState => {return copyList});
+        setModal(false);
+        setMode('')
     }
     return (
         <div>
+            {modal &&
+            <Modal mode={mode} task={task} onConfirmDelete={handleConfirmDelete} onConfirmAdd={handleConfirmAdd} onConfirmEdit={handleConfirmEdit}/>}
 
-            {modal && <Modal mode={mode} task={task} onConfirmDelete={handleConfirmDelete}/>}
-
-            <TodoList todoList={todoList} onMultipleDelete={handleMultipleDelete} onDelete={handleDelete} onEdit={handleEdit}/>
-
+            <TodoList todoList={todoList} onMultipleDelete={handleMultipleDelete} onDelete={handleDelete}
+                      onEdit={handleEdit} onAdd={handleAdd}/>
         </div>
     );
 };

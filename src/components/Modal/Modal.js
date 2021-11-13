@@ -4,15 +4,26 @@ import Delete from "./Delete/Delete";
 import Update from "./Update/Update";
 import styles from "./Modal.module.scss";
 import Button from "../Button/Button";
+import ReactDOM, {createPortal} from 'react-dom';
+
+const Window = (props) => {
+    return (
+    <form onSubmit={handleSubmit} className={styles.modal}>
+        {props.mode === "delete" && <Delete task={props.task} onConfirmDelete={() => {
+            props.onConfirmDelete(props.task)
+        }}/>}
+        {props.mode === "add" && <Add task={props.task} onConfirmAdd={props.onConfirmAdd}/>}
+        {props.mode === "edit" && <Update task={props.task} onConfirmEdit={props.onConfirmEdit}/>}
+    </form>);
+}
 
 const Modal = (props) => {
     const [option, setOption] = useState();
-    const [data,setData] = useState('');
+    const [data, setData] = useState('');
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
     }
 
     const handleOperation = (myData) => {
@@ -20,21 +31,9 @@ const Modal = (props) => {
         console.log(data)
     }
 
-    // const handleConfirmDelete = (id) => {
-    //     props.onConfirmDelete(1)
-    // }
     return (
-        <form onSubmit={handleSubmit} className={styles.modal}>
+        {ReactDOM.createPortal(<Window/>,document.getElementById('backdrop-root'))}
 
-            {props.mode==="delete"&& <Delete task={props.task} onConfirmDelete={() => { props.onConfirmDelete(props.task)}}/>}
-            {/*{props.mode==="edit"&& <Update task={props.task} onConfirmDelete={() => { props.onConfirmEdit(props.task.id)}}/>}*/}
-            {/*{props.mode==="delete"&& <Delete task={props.task} onConfirmDelete={() => { props.onConfirmDelete(props.task.id)}}/>}*/}
-            {/*{option==="add"&& <Add onAdd={handleOperation} data={data}/>}*/}
-            {/*{option==="remove"&& <Delete onDelete={handleOperation} todoItems={todoItems}/>}*/}
-            {/*{option==="edit"&& <Update onUpdate={handleOperation}/>}*/}
-
-
-        </form>
     );
 };
 

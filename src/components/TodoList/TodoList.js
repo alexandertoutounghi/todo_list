@@ -28,19 +28,19 @@ const TodoList = (props) => {
 
     }
 
-    const handleEdit = (id) => {
-        console.log(id);
-    }
+    // const handleEdit = (id) => {
+    //     console.log(id);
+    // }
     return (
         <div className={styles['todo-list__container']}>
             <h2>Todo List</h2>
-            <Button name={"Add Task"}/>
+            <Button name={"Add Task"} classStyle={"submit"} event={props.onAdd}/>
 
             <ListTitle/>
             <hr/>
             <div>
                 {props.todoList.map((todo, index) => {
-                    return (<TodoItem key={index} todo={todo} index={index} onSelected={handleMutlipleSelection} onDelete={handleDelete} onEdit={handleEdit}/>)
+                    return (<TodoItem key={index} todo={todo} index={index} onSelected={handleMutlipleSelection} onDelete={handleDelete} onEdit={props.onEdit}/>)
                 })}
             </div>
             {/*{isMultiple && <Button type={"button"} classStyle={'close'} name={"Delete Selection"} event={props.onMultipleDelete(multiple)}/>}*/}
