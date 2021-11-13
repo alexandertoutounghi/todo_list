@@ -1,0 +1,33 @@
+.todo-item {
+  background: white;
+  border-radius:3px;
+  text-align:justify;
+  width:100%;
+  display:inline-grid;
+  grid-template-columns: 12.5% 62.5% 12.5% 12.5%;
+  justify-items:left;
+  justify-content:space-between;
+  padding:1em 0 1em;
+  .todo-item__name {
+    word-wrap: break-word;
+    white-space: initial;
+    margin: 0 1em 0;
+  }
+
+  &:hover {
+    background: #b4b4be;
+    //cursor: grab;
+  }
+}
+hr {
+  //margin:0;
+  //padding: 0;
+  border:1px solid #b4b4be;
+  background:#b4b4be;
+
+}
+.selected {
+  background: #b4b4be;
+
+
+}

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styles from './Delete.module.scss'
+import Button from "../../Button/Button";
 
 const Delete = (props) => {
-    const [checked, setChecked] = new Array(props.todoItems.length).fill(false);
     /**
      *
      * @param e Event
@@ -21,27 +21,11 @@ const Delete = (props) => {
     return (
         <React.Fragment>
             <div className={styles.delete}>
-
-                {/*<label htmlFor="delete-task">Select One or Multiple Tasks</label>*/}
-                {props.todoItems.map((todo, index) => {
-                    return (
-                            <div className={styles['delete-task']} key={index} data-index={index}
-                                 onClick={handleSelection}>
-                                <input onClick={handleDelete} type="checkbox" key={todo.id} name={todo.name}
-                                       value={todo.name}/>
-                                <label htmlFor="">{todo.name}</label>
-                            </div>
-                          )
-                })}
-
-                {/*<select id="delete-task" onChange={handleDelete} multiple>*/}
-                {/*    {props.todoItems.map(todo => {*/}
-                {/*        return <option value={todo.name} key={todo.id}>{todo.name}</option>*/}
-                {/*    })*/}
-                {/*    }*/}
-                {/*</select>*/}
+                <p>Are you sure you want to delete task: <br/>
+                    <strong>"{props.task.name}" </strong>?</p>
+            <Button name={"Confirm"} type={"button"} classStyle={"submit"} event={props.onConfirmDelete}/>
+            {/*<Button name={"Cancel"} type={"button"} classStyle={"close"}/>*/}
             </div>
-            <button>Clear</button>
         </React.Fragment>
     );
 };
