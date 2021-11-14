@@ -1,25 +1,34 @@
-.add {
-  label, input {
-    width: 50%;
-    display: block;
-  }
+.add-container {
+}
 
+
+.add {
+  display: grid;
+  grid-template-areas: "A A A A A A A A"
+  "B B B B B B B B"
+  " C D . . . . . .";
+  grid-column-gap: 2em;
+  grid-row-gap: 0.75em;
+  justify-items: start;
+  align-items: start;
+
+  label, input {
+    width: 300px;
+    max-width: 80%;
+    font-size: large;
+  }
+  label {
+    grid-area: A;
+  }
   input {
-    margin: 0 auto;
-    margin-bottom: 0.75em;
-    height: 1.5em;
+    grid-area: B;
+    height: 2em;
     border: 2px solid #a7adaf;
     outline: none;
     border-radius: 3px;
+    padding-left: 0.5em;
     &:focus {
       border: 2px solid #0c9ec0;
     }
   }
-
-  label {
-    margin-left: 2.2em;
-    margin-bottom: 0.25em;
-  }
-
-
 }

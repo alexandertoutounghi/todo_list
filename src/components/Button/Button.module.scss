@@ -2,7 +2,7 @@
   border: none;
   border-radius: 5%;
   //margin: 1em 0.5em 1em;
-  padding: 0.25em 0.5em 0.25em;
+  padding: 0.5em 0.75em 0.5em;
   font-weight: bold;
 
   &:hover {
@@ -13,7 +13,7 @@
 .clear {
   background: #11a8f8;
   color: white;
-  padding:0.15em 0.5em 0.15em;
+  //padding:0.15em 0.5em 0.15em;
 
   &:hover {
     background: #1f88c0;
@@ -23,6 +23,7 @@
 .submit {
   background: #1fb41f;
   color: white;
+
 
   &:hover {
     background: #1f861f;
@@ -40,5 +41,16 @@
   }
 
   padding: 0.35em 0.55em 0.35em;
+
+}
+.modal {
+  .clear {
+    grid-area: D;
+
+  }
+  .submit {
+    grid-area: C;
+
+  }
 
 }
