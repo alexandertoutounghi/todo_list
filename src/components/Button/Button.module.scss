@@ -1,7 +1,6 @@
 .button {
   border: none;
   border-radius: 5%;
-  //margin: 1em 0.5em 1em;
   padding: 0.5em 0.75em 0.5em;
   font-weight: bold;
 
@@ -13,7 +12,6 @@
 .clear {
   background: #11a8f8;
   color: white;
-  //padding:0.15em 0.5em 0.15em;
 
   &:hover {
     background: #1f88c0;
@@ -32,25 +30,47 @@
 }
 
 .close {
-  //margin:1em;
   background: #de1818;
-  color:white;
+  color: white;
 
   &:hover {
-  background: #a11d1d;
+    background: #a11d1d;
   }
 
   padding: 0.35em 0.55em 0.35em;
 
 }
+
 .modal {
   .clear {
     grid-area: D;
 
   }
+
   .submit {
     grid-area: C;
 
   }
+
+
+}
+
+.modal.clear {
+  grid-area: E;
+}
+
+.modal.submit {
+  grid-area: D;
+}
+
+.modal.close {
+  grid-area: A;
+
+}
+
+.delete.close {
+  margin-left: 1em;
+  padding: 0.5em 0.75em 0.5em;
+
 
 }

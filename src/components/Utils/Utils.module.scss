@@ -1,0 +1,10 @@
+@mixin input-style {
+  height: 2em;
+  border: 2px solid #a7adaf;
+  outline: none;
+  border-radius: 3px;
+  padding-left: 0.5em;
+  &:focus {
+    border: 2px solid #0c9ec0;
+  }
+}

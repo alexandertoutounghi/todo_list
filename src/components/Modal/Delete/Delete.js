@@ -24,7 +24,7 @@ const Delete = (props) => {
                 <p>Are you sure you want to delete task: <br/>
                     <strong>"{props.task.name}" </strong>?</p>
             <Button name={"Confirm"} type={"button"} classStyle={"submit"} event={props.onConfirmDelete}/>
-            {/*<Button name={"Cancel"} type={"button"} classStyle={"close"}/>*/}
+            <Button name={"Cancel"} type={"button"} classStyle={"close"} modalStyle={'delete'} event={props.onClose}/>
             </div>
         </React.Fragment>
     );

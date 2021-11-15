@@ -8,8 +8,6 @@ import ReactDOM, {createPortal} from 'react-dom';
 
 
 const Modal = (props) => {
-    const [option, setOption] = useState();
-    const [data, setData] = useState('');
 
     const Window = (props) => {
         return (
@@ -17,21 +15,24 @@ const Modal = (props) => {
                 <div className={styles.modal}>
                     {props.mode === "delete" && <Delete task={props.task} onConfirmDelete={() => {
                         props.onConfirmDelete(props.task)
-                    }}/>}
-                    {props.mode === "add" && <Add task={props.task} onConfirmAdd={props.onConfirmAdd}/>}
-                    {props.mode === "edit" && <Update task={props.task} onConfirmEdit={props.onConfirmEdit}/>}
+                    }} onClose={props.onClose}/>}
+                    {props.mode === "add" &&
+                    <Add task={props.task} onConfirmAdd={props.onConfirmAdd} onClose={props.onClose}/>}
+                    {props.mode === "edit" &&
+                    <Update task={props.task} onConfirmEdit={props.onConfirmEdit} onClose={props.onClose}
+                    />}
+                    {props.mode === "palindrome" &&
+                    <div className={'palindrome'}>
+                        <div>{props.word} is {props.result?"":'not'} a Palindrome!</div>
+                        <Button name={'Close'} classStyle={'close'}  event={props.onClose}/>
+                    </div>
+                    }
                 </div>
             </div>);
 
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
-    const handleOperation = (myData) => {
-        setData(myData);
-    }
 
-    return ReactDOM.createPortal( <Window {...props}/>,document.getElementById('backdrop-root'))
+    return ReactDOM.createPortal(<Window {...props}/>, document.getElementById('backdrop-root'))
 
 };
 

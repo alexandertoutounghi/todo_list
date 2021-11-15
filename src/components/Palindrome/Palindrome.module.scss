@@ -1,0 +1,27 @@
+@import './src/components/Utils/Utils.module';
+.palindrome {
+  width:100%;
+  //text-align:center;
+  display:flex;
+  justify-content:center;
+  margin-left:6em;
+  form {
+    display: grid;
+    grid-template-areas:
+    "A A A A A A A A"
+    "B B B B B B B B"
+    "C . . . . . . .";
+    label {
+      grid-area:A;
+    }
+    input {
+      grid-area: B;
+      @include input-style;
+    }
+    grid-column-gap: 2em;
+    grid-row-gap: 0.75em;
+    justify-items: start;
+    align-items: start;
+  }
+
+}

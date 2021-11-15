@@ -1,0 +1,28 @@
+@import "./src/components/Utils/Utils.module";
+
+
+.update {
+  display: grid;
+  grid-template-areas: ". . . . . . . A"
+  "B B B B B B B B"
+  "C C C C C C C C"
+  "D E . . . . . .";
+  grid-column-gap: 2em;
+  grid-row-gap: 0.75em;
+  justify-items: start;
+  align-items: start;
+  label, input {
+    width: 300px;
+    max-width: 80%;
+    font-size: large;
+  }
+  input {
+    @include input-style;
+    grid-area: C;
+  }
+  label {
+    grid-area: B;
+  }
+
+
+}

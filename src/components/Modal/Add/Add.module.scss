@@ -4,11 +4,12 @@
 
 .add {
   display: grid;
-  grid-template-areas: "A A A A A A A A"
+  grid-template-areas:". . . . . . . A"
   "B B B B B B B B"
-  " C D . . . . . .";
+  "C C C C C C C C"
+  "D E . . . . . .";
   grid-column-gap: 2em;
-  grid-row-gap: 0.75em;
+  grid-row-gap: 0.5em;
   justify-items: start;
   align-items: start;
 
@@ -18,10 +19,10 @@
     font-size: large;
   }
   label {
-    grid-area: A;
+    grid-area: B;
   }
   input {
-    grid-area: B;
+    grid-area: C;
     height: 2em;
     border: 2px solid #a7adaf;
     outline: none;

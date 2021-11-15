@@ -12,17 +12,18 @@ const Add = (props) => {
     }
 
     const handleAdd = () => {
-        props.onConfirmAdd(add);
+        if (add)
+            props.onConfirmAdd(add);
     }
 
     return (
         <div className={styles["add-container"]}>
             <div className={styles.add}>
-                <Button type="button" name={"X"} classStyle="close" modalStyle={"modal"} event={handleAdd}/>
+                <Button type="button" name={"X"} classStyle={"close"}  modalStyle={"modal"} event={props.onClose}/>
                 <label htmlFor="add-item">Enter Task:</label>
                 <input id={'add-item'} type="text" value={add} placeholder={"Add Task Here"}
-                       onChange={handleInput}/>
-                <Button type="clear" name={"Clear"} classStyle="clear" modalStyle={"modal"} event={handleClear}/>
+                       onChange={handleInput} />
+                <Button type="button" name={"Clear"} classStyle="clear" modalStyle={"modal"} event={handleClear}/>
                 <Button type="button" name={"Add"} classStyle="submit" modalStyle={"modal"} event={handleAdd}/>
             </div>
         </div>
